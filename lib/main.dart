@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
+import 'package:myapp/counter.dart';
+import 'package:myapp/cart.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,7 +13,11 @@ void main() {
     title: 'My app', // used by the OS task switcher
     home: Scaffold(
       body: Center(
-        child: MyButton(),
+        child: ShoppingListItem(
+          product: Product(name: 'Chips'),
+          inCart: true,
+          onCartChanged: (product, inCart) {},
+        ),
       ),
     ),
   ));
@@ -134,7 +139,7 @@ class MyButton extends StatelessWidget {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Colors.lightGreen[500]),
         child: Center(
           child: Text(
-            'Engage',
+            'Hello World',
             style: TextStyle(color: Colors.white),
           ),
         ),
