@@ -11,14 +11,12 @@ void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(MaterialApp(
     title: 'My app', // used by the OS task switcher
-    home: Scaffold(
-      body: Center(
-        child: ShoppingListItem(
-          product: Product(name: 'Chips'),
-          inCart: true,
-          onCartChanged: (product, inCart) {},
-        ),
-      ),
+    home: ShoppingList(
+      products: <Product>[
+        Product(name: 'Eggs'),
+        Product(name: 'Flour'),
+        Product(name: 'Chocolate chips'),
+      ],
     ),
   ));
 }
@@ -27,7 +25,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Welcome to Flutter', home: RandomWords());
+    return Scaffold(
+      body: Center(
+        child: ShoppingListItem(
+          product: Product(name: 'Chips'),
+          inCart: false,
+          onCartChanged: (product, inCart) {},
+        ),
+      ),
+    );
   }
 }
 
